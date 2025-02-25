@@ -1,0 +1,151 @@
+definitions:
+  model.Version:
+    properties:
+      id:
+        type: string
+      platform:
+        type: string
+      versionNo:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /add_versions:
+    post:
+      consumes:
+      - application/json
+      description: 添加新的版本号信息
+      parameters:
+      - description: 版本号信息
+        in: body
+        name: version
+        required: true
+        schema:
+          $ref: '#/definitions/model.Version'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功消息
+        "400":
+          description: 请求错误
+        "500":
+          description: 服务器错误
+      summary: 添加版本号信息
+      tags:
+      - 版本管理
+  /delete_versions/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: 根据ID删除版本号信息
+      parameters:
+      - description: 版本号ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功消息
+        "500":
+          description: 服务器错误
+      summary: 删除版本号信息
+      tags:
+      - 版本管理
+  /get_versions/{id}:
+    get:
+      consumes:
+      - application/json
+      description: 根据ID获取版本号信息
+      parameters:
+      - description: 版本号ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Version'
+        "500":
+          description: 服务器错误
+      summary: 根据ID获取版本号信息
+      tags:
+      - 版本管理
+  /join_raft_cluster/:
+    get:
+      consumes:
+      - application/json
+      description: 此接口用于将当前节点加入到Raft集群中。
+      parameters:
+      - description: 节点ID
+        in: query
+        name: ID
+        required: true
+        type: string
+      - description: 节点地址
+        in: query
+        name: Address
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功消息
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "400":
+          description: 请求错误
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: 服务器错误
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: 向领导者节点发送请求，把自身加入到集群中
+      tags:
+      - 集群管理
+  /update_versions/{id}:
+    put:
+      consumes:
+      - application/json
+      description: 根据ID更新版本号信息
+      parameters:
+      - description: 版本号ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: 版本号信息
+        in: body
+        name: version
+        required: true
+        schema:
+          $ref: '#/definitions/model.Version'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功消息
+        "400":
+          description: 请求错误
+        "500":
+          description: 服务器错误
+      summary: 更新版本号信息
+      tags:
+      - 版本管理
+swagger: "2.0"
