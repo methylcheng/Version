@@ -128,3 +128,14 @@
 ### 如果是第一个节点，初始化集群；否则，尝试加入现有集群。
 
 # 接口文档截图
+## 添加版本号信息(AddVersion)
+<img width="1279" src="https://github.com/user-attachments/assets/38eab37f-f477-45e4-8b00-e54d874b0752" /><br>
+## 更新版本号信息(UpdateVersion)
+<img width="1279" src="https://github.com/user-attachments/assets/fd70115d-cb70-43ec-9f28-68a8a94932e5" /><br>
+## 删除版本号信息(DeleteVersion)
+<img width="1279" src="https://github.com/user-attachments/assets/e4a2eddf-3d6b-44e8-a158-199c6fac4509" /><br>
+## 查询版本号信息(GetVersionByID)
+<img width="1279" src="https://github.com/user-attachments/assets/f70275bc-2f0d-4a0e-96ec-21ecc75d3432" /><br>
+
+
+
